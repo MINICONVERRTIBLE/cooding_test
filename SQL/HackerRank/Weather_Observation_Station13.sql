@@ -10,6 +10,11 @@ Station.jpg
 where LAT_N is the northern latitude and LONG_W is the western longitude..
 https://www.hackerrank.com/challenges/weather-observation-station-13/problem*/
 
-SELECT ROUND(SUM(LAT_N),4)
-FROM STATION 
-WHERE LAT_N > 38.7880 AND LAT_N < 137.2345;
+SELECT ROUND(
+    ABS(
+        MIN(LAT_N)-MAX(LAT_N)
+    )
+    + ABS(
+        MIN(LONG_W)-MAX(LONG_W)
+    ),  4
+) FROM STATION;
