@@ -37,9 +37,17 @@ In company C2, the only lead manager is LM2. There is one senior manager, SM3, u
 
 https://www.hackerrank.com/challenges/the-company/problem
 */
-SELECT * 
-FROM Company c
-INNER JOIN Lead_Manager
-ON Company.컬럼명 = Lead_Manager.컬럼명
-INNER JOIN Se
+SELECT company.company_code,
+        founder,
+        COUNT(lead_manager_code),
+        COUNT(senior_manager_code),
+        COUNT(manager_code),
+        COUNT(employee_code)
+FROM Company, Lead_Manager, Senior_Manager, Manager, Employee
+WHERE Company.company_code = Lead_Manager.company_code AND 
+    Lead_Manager.company_code = Senior_Manager.company_code AND 
+        Senior_Manager.company_code = Manager.company_code AND 
+            Manager.company_code = Employee.company_code 
+ORDER BY company_code ASC
+;
 ;
