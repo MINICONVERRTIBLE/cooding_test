@@ -32,9 +32,9 @@ Only hacker 90411 managed to earn a full score for more than one challenge, so w
 SELECT H.hacker_id, H.name 
 FROM Submissions S
 INNER JOIN Challenges C ON S.challenge_id = C.challenge_id
-INNER JOIN Difficulty D ON C.difficulty_level = D.difficult_level
+INNER JOIN Difficulty D ON C.difficulty_level = D.difficulty_level
 INNER JOIN Hackers H ON S.hacker_id = H.hacker_id
-WHERE S.score AND C.difficult_level = D.difficulty_level
+WHERE S.score AND C.difficulty_level = D.difficulty_level
 GROUP BY H.hacker_id, H.name 
 HAVING COUNT(H.hacker_id) > 1
-ORDER BY COUNT(H.hacker_id) DESC,H.hacker_id
+ORDER BY COUNT(H.hacker_id) DESC, H.hacker_id
